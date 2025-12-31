@@ -1,0 +1,82 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6 mb-3 mb-md-0">
+      <h3 class="text-center text-white p-0 m-0">TODO_FORM</h3>
+
+      <div class="card">
+        <div class="card-body">
+          <input type="text" #todoItem class="form-control" />
+
+          <!-- element reference like id #todoItem -->
+
+          <button
+            *ngIf="!isInEdidMode"
+            (click)="onTodoAdd()"
+            mat-raised-button
+            color="accent"
+            class="btn w-100 btn-md btn-info mt-4"
+          >
+            Add Todo
+          </button>
+
+          <button
+            (click)="onUpdate()"
+            *ngIf="isInEdidMode"
+            mat-raised-button
+            color="accent"
+            class="w-100 mt-4 btn-hover-success"
+          >
+            Update Todo
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h3 class="text-center text-white p-0 m-0">List</h3>
+      <div class="card">
+        <div class="card-body">
+          <ul class="list-group" *ngIf="todoArr.length > 0; else noTodo">
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center"
+              *ngFor="let todo of todoArr; trackBy: trackById"
+            >
+              <strong>
+                {{ todo.todoItem }}
+              </strong>
+
+              <div class="">
+                <p-button
+                  (onClick)="onEdit(todo)"
+                  label="Edit"
+                  styleClass="p-button-warning p-button-sm"
+                  rounded="true"
+                  size="small"
+                  class="me-3"
+                >
+                </p-button>
+
+                <p-button
+                  label="Remove"
+                  styleClass="p-button-danger p-button-sm"
+                  rounded="true"
+                  class="btn-sm"
+                  size="small"
+                  (onClick)="onRemove(todo.todoId)"
+                >
+                </p-button>
+              </div>
+            </li>
+          </ul>
+
+          <ng-template #noTodo>
+            <p class="alert alert-warning">
+              No Todo !!!
+              <!-- fallback_mesg -->
+            </p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
