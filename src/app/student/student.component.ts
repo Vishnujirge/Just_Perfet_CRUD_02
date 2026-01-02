@@ -40,6 +40,13 @@ export class StudentComponent implements OnInit {
       email: 'LB@gmail.com',
       contact: '9012345678',
     },
+     {
+      stdId: 4,
+      fname: 'Shubhankar',
+      lname: 'Podar',
+      email: 'Sp@gmail.com',
+      contact: '8912345678',
+    },
   ];
 
   @ViewChild('fname') fname !: ElementRef;
