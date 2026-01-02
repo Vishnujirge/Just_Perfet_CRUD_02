@@ -31,7 +31,7 @@ export class TodoComponent implements OnInit {
       todoId: '102',
     },
   ];
-  isInEdidMode: boolean = false;
+  isInEditMode: boolean = false;
   edit_id!: string;
 
   @ViewChild('todoItem') todoItem!: ElementRef;
@@ -88,7 +88,7 @@ export class TodoComponent implements OnInit {
     cl(todo);
     this.edit_id = todo.todoId;
     this.todoItem.nativeElement.value = todo.todoItem;
-    this.isInEdidMode = true;
+    this.isInEditMode = true;
   }
 
   onUpdate() {
@@ -118,7 +118,7 @@ export class TodoComponent implements OnInit {
           duration: 3000,
         }
       );
-    this.isInEdidMode = false;
+    this.isInEditMode = false;
     this.todoItem.nativeElement.value = '';
   }
 }

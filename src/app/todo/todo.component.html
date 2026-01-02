@@ -1,16 +1,24 @@
-<div class="container mt-4">
+<h1 class="text-center text-white">
+  {{ isInEditMode ? "Update Todo" : "Add Todo" }}
+</h1>
+<div class="container-fluid mt-4">
   <div class="row">
-    <div class="col-md-6 mb-3 mb-md-0">
+    <div class="col-md-5 mb-3 mb-md-0">
       <h3 class="text-center text-white p-0 m-0">TODO_FORM</h3>
 
       <div class="card">
         <div class="card-body">
-          <input type="text" #todoItem class="form-control" />
+          <input
+            type="text"
+            #todoItem
+            class="form-control"
+            placeholder="Todo......"
+          />
 
           <!-- element reference like id #todoItem -->
 
           <button
-            *ngIf="!isInEdidMode"
+            *ngIf="!isInEditMode"
             (click)="onTodoAdd()"
             mat-raised-button
             color="accent"
@@ -21,7 +29,7 @@
 
           <button
             (click)="onUpdate()"
-            *ngIf="isInEdidMode"
+            *ngIf="isInEditMode"
             mat-raised-button
             color="accent"
             class="w-100 mt-4 btn-hover-success"
@@ -32,7 +40,7 @@
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-7">
       <h3 class="text-center text-white p-0 m-0">List</h3>
       <div class="card">
         <div class="card-body">
@@ -47,7 +55,7 @@
 
               <div class="">
                 <p-button
-                  (onClick)="onEdit(todo)"
+                  (click)="onEdit(todo)"
                   label="Edit"
                   styleClass="p-button-warning p-button-sm"
                   rounded="true"
@@ -62,7 +70,7 @@
                   rounded="true"
                   class="btn-sm"
                   size="small"
-                  (onClick)="onRemove(todo.todoId)"
+                  (click)="onRemove(todo.todoId)"
                 >
                 </p-button>
               </div>

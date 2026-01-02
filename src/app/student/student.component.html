@@ -1,1 +1,96 @@
-<p>student works!</p>
+<div class="container-fluid">
+  <div class="row mt-3">
+    <h1 class="section-title text-center">
+      {{ isInEditMode ? "Add Student" : "Update Student" }}
+    </h1>
+
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" #fname id="fname" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" #lname id="lname" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label for="email"> Email</label>
+            <input type="text" #email id="email" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label for="contact">Contact</label>
+            <input type="text" #contact id="contact" class="form-control" />
+          </div>
+
+          <button
+            (click)="onAddStd()"
+            *ngIf="isInEditMode"
+            mat-raised-button
+            color="accent"
+            class="btn btn-hover-info w-100 mt-4"
+          >
+            Add
+          </button>
+
+          <button
+            *ngIf="!isInEditMode"
+            mat-raised-button
+            color="primary"
+            class="btn btn-hover-success w-100 mt-4"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="table-responsive rounded overflow-hidden shadow-sm">
+        <table class="table table-bordered table-striped" *ngIf="stdArr.length > 0; else noStd">
+          <thead class="table-light">
+            <tr>
+              <th>Sr No</th>
+              <th>Full Name</th>
+              <th>Email</th>
+              <th>Contact</th>
+              <th>Edit</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let std of stdArr; let i = index; trackBy: trackById">
+              <td>{{ i + 1 }}</td>
+              <td>
+                {{ std.fname }}
+                {{ std.lname }}
+              </td>
+              <td>{{ std.email }}</td>
+              <td>{{ std.contact }}</td>
+              <td class="text-center">
+                <button mat-mini-fab color="primary">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </td>
+              <td class="text-center">
+                <button (click)="onRmove(std.stdId)" mat-mini-fab color="warn">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <ng-template #noStd>
+          <p class="alert alert-warning">
+            No Students !!!
+          </p>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,11 +11,13 @@ import { SpeedDialModule } from 'primeng/speeddial';
 
 import { ButtonModule } from 'primeng/button';
 import { MatButtonModule } from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { GetConfirmComponent } from './get-confirm/get-confirm.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [AppComponent, TodoComponent, StudentComponent],
+  declarations: [AppComponent, TodoComponent, StudentComponent, GetConfirmComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -24,9 +26,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ButtonModule,
     MatButtonModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

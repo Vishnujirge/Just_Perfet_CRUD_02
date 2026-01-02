@@ -24,8 +24,9 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 
-  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-    url("./assets/image.png") center / cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35)),
+    url("./assets/IMG03.png") center / cover no-repeat;
+
 
   background-attachment: fixed;
 }
@@ -47,5 +48,45 @@ body {
 
 .btn-hover-success:hover {
   background: #00f138 !important; /* success green */
-  color: #fff !important;
+  color: #000000 !important;
+}
+
+  .btn-hover-info {
+  transition: background 0.25s ease;
+}
+
+.btn-hover-info:hover {
+  background: #09e1d7 !important; /* success green */
+  color: #000000 !important;
+}
+
+.table-responsive {
+  border-radius: 14px;
+}
+
+.section-title {
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+
+  margin-bottom: 18px;
+
+  /* subtle glow */
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+
+  /* underline bar */
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  width: 55px;
+  height: 4px;
+  background: linear-gradient(135deg, #ff5fa6, #ff2f7a);
+  border-radius: 10px;
+
+  position: absolute;
+  left: 0;
+  bottom: -6px;
 }
