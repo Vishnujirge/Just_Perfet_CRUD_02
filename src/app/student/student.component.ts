@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Istd } from '../models/std';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { GetConfirmComponent } from '../get-confirm/get-confirm.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-student',
@@ -27,21 +28,21 @@ export class StudentComponent implements OnInit {
       contact: '9123456789',
     },
     {
-      stdId: 2,
+      stdId: 3,
       fname: 'Gajanan',
       lname: 'Kadam',
       email: 'GM@gmail.com',
       contact: '9123456789',
     },
     {
-      stdId: 3,
+      stdId: 4,
       fname: 'Laxmikant',
       lname: 'Biradar',
       email: 'LB@gmail.com',
       contact: '9012345678',
     },
-     {
-      stdId: 4,
+    {
+      stdId: 5,
       fname: 'Shubhankar',
       lname: 'Podar',
       email: 'Sp@gmail.com',
@@ -56,12 +57,20 @@ export class StudentComponent implements OnInit {
 
   isInEditMode: boolean = true;
 
+  // constructor(
+  //   private _matDialog: MatDialog,
+  //   private _snackBar = MatSnackBar
+  //we create here instance for MatDilogBox of class
+  //matDialogBox is a singleTone instance class
+  //in your apk this is only one instance
+  // ) { }
+
+
   constructor(
-    private _matDialog: MatDialog
-    //we create here instance for MatDilogBox of class
-    //matDialogBox is a singleTone instance class
-    //in your apk this is only one instance
+    private _matDialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) { }
+
   uuid = () => {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, character => {
       const random = (Math.random() * 16) | 0;
@@ -116,7 +125,11 @@ export class StudentComponent implements OnInit {
           let getIndex = this.stdArr.findIndex(s => s.stdId === id)
           let std = this.stdArr.splice(getIndex, 1)
 
-
+          this._snackBar.open(`The Student ${std[0].fname} ${std[0].lname} Whith ID ${id} Is Removed Successfully !!!`, `Close`, {
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+            duration: 2500
+          })
 
         }
       })
